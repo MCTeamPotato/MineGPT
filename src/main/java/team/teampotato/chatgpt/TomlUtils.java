@@ -23,19 +23,9 @@ public class TomlUtils implements ModInitializer {
         MODEL = toml.getString("model");
         MAX_TOKENS = toml.getString("max_tokens");
         N = toml.getString("n");
-        /*
-        System.out.println("-----------------------------------------");
-        System.out.println("[Fabric-ChatGPT]Your ChatGPT Config Info:");
-        System.out.println("-----------------------------------------");
-        System.out.println("Endpoint: " + ENDPOINT);
-        System.out.println("API key: " + API_KEY);
-        System.out.println("Model: " + MODEL);
-        System.out.println("Max tokens: " + MAX_TOKENS);
-        System.out.println("N: " + N);
-        System.out.println("-----------------------------------------");
-         */
+
         LOGGER.info("-----------------------------------------");
-        LOGGER.info("[Fabric-ChatGPT]Your ChatGPT Config Info:");
+        LOGGER.info("[Fabric-MineGPT]Your ChatGPT Config Info:");
         LOGGER.info("-----------------------------------------");
         LOGGER.info("Endpoint: {}", ENDPOINT);
         LOGGER.info("API key: {}" , API_KEY);
