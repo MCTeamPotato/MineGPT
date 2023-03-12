@@ -11,6 +11,7 @@ model = "text-davinci-003" #这个是AI模型 我选择的是达芬奇模型
 max_tokens = "1024" #这里是返回最大信息  
 n = "5" #这里是返回多少次结果  
 =======================================
+
 ## Usage-English
 When MineGPT is loaded, a configuration file will be generated.   
 Open the file at config/MineGPTconfig.toml and input your information and settings. 
