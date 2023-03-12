@@ -11,6 +11,7 @@ api_key = "你的OpenAI APIKey"  #这个是你的OpenAI的API密钥
 model = "text-davinci-003" #这个是AI模型 我选择的是达芬奇模型  
 
 max_tokens = "1024" #这里是返回最大信息  
+
 n = "5" #这里是返回多少次结果
 
 # Usage-English
