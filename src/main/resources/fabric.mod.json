@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "id": "minegpt",
+  "version": "${version}",
+
+  "name": "MineGPT",
+  "description": "OpenAI API go MCchat",
+  "authors": [
+    "TeamPotato",
+    "Awei"
+  ],
+  "contact": {
+    "homepage": "https://fabricmc.net/",
+    "sources": "https://github.com/FabricMC/fabric-example-mod"
+  },
+
+  "license": "GPLv3",
+  "icon": "assets/minegpt/icon.png",
+
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "team.teampotato.chatgpt.ChatGPT",
+      "team.teampotato.chatgpt.TomlUtils",
+      "team.teampotato.chatgpt.CreateConfig"
+    ]
+  },
+
+  "depends": {
+    "fabricloader": ">=0.13.3",
+    "fabric": "*",
+    "minecraft": ">=1.18.2",
+    "java": ">=17"
+  },
+  "suggests": {
+    "another-mod": "*"
+  }
+}
