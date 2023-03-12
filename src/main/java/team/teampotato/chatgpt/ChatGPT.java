@@ -37,7 +37,7 @@ public class ChatGPT implements ModInitializer {
         TomlUtils.N = toml.getString("n");
 
 
-        // Register the "/chatgpt" command
+        // 注册指令
         CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
             dispatcher.register(CommandManager.literal("chatgpt")
                     .then(CommandManager.argument("message", StringArgumentType.greedyString())
