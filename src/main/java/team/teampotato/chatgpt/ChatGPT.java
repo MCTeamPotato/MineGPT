@@ -9,6 +9,7 @@ import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.text.LiteralText;
+import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Formatting;
 import org.json.JSONObject;
 
@@ -37,7 +38,7 @@ public class ChatGPT implements ModInitializer {
         TomlUtils.N = toml.getString("n");
 
 
-        // 注册指令
+        // Register the "/chatgpt" command
         CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
             dispatcher.register(CommandManager.literal("chatgpt")
                     .then(CommandManager.argument("message", StringArgumentType.greedyString())
@@ -91,15 +92,17 @@ public class ChatGPT implements ModInitializer {
                 HttpResponse<String> response = client.send(request, HttpResponse.BodyHandlers.ofString());
                 JsonObject responseJson = JsonParser.parseString(response.body()).getAsJsonObject();
                 JsonArray choices = responseJson.getAsJsonArray("choices");
-                LOGGER.info("Received response from ChatGPT API: {}", response);
+                LOGGER.info("Received response from ChatGPT API" + response);
 
                 if (choices == null || choices.size() == 0) {
+                    //return "Failed to get a response from OpenAI API.";
                     return "Failed to get a response from OpenAI API.";
                 }
                 JsonObject choice = choices.get(0).getAsJsonObject();
                 return choice.get("text").getAsString();
             } catch (Exception e) {
                 e.printStackTrace();
+                //return "An error occurred while processing the request.";
                 return "An error occurred while processing the request.";
             }
         });

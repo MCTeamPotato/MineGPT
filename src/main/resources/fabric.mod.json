@@ -22,7 +22,8 @@
     "main": [
       "team.teampotato.chatgpt.ChatGPT",
       "team.teampotato.chatgpt.TomlUtils",
-      "team.teampotato.chatgpt.CreateConfig"
+      "team.teampotato.chatgpt.CreateConfig",
+      "team.teampotato.chatgpt.Command"
     ]
   },
 
