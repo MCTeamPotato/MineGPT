@@ -28,7 +28,7 @@ public class TomlUtils implements ModInitializer {
         LOGGER.info("[Fabric-MineGPT]Your ChatGPT Config Info:");
         LOGGER.info("-----------------------------------------");
         LOGGER.info("Endpoint: {}", ENDPOINT);
-        LOGGER.info("API key: {}" , API_KEY);
+        //LOGGER.info("API key: {}" , API_KEY);
         LOGGER.info("Model: {}" , MODEL);
         LOGGER.info("Max tokens: {}" , MAX_TOKENS);
         LOGGER.info("N: {}" , N);
