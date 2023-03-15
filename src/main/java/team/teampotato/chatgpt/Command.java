@@ -3,19 +3,14 @@ package team.teampotato.chatgpt;
 
 import com.moandjiezana.toml.Toml;
 import com.moandjiezana.toml.TomlWriter;
-import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import com.mojang.brigadier.context.CommandContext;
 
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.command.v1.CommandRegistrationCallback;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.text.LiteralText;
 import net.minecraft.text.TranslatableText;
-import net.minecraft.util.Formatting;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 
@@ -29,8 +24,12 @@ import java.util.Map;
 import static team.teampotato.chatgpt.TomlUtils.readTomlFromFile;
 
 public class Command implements ModInitializer {
+    public Command() {
+        TomlUtils.loadConfig();
+    }
 
-    private static final String CONFIG = "config/MineGPTconfig.toml";
+
+    private static final String CONFIG = "config" + File.separator + "MineGPTconfig.toml";
     private Toml toml;
     private static final Logger LOGGER = LogManager.getLogger();
 
@@ -41,7 +40,6 @@ public class Command implements ModInitializer {
         } catch (IOException e) {
             LOGGER.error("Failed to load config file: {}", e.getMessage());
         }
-
         CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
             LiteralArgumentBuilder<ServerCommandSource> mgptCommand = CommandManager.literal("mgpt")
                     .requires(source -> source.hasPermissionLevel(2));
@@ -77,13 +75,16 @@ public class Command implements ModInitializer {
                         Map<String, Object> tomlMap = toml.toMap();
                         tomlMap.put("endpoint", "https://api.openai.com/v1/completions");
                         tomlMap.put("model", "text-davinci-003");
+                        tomlMap.put("api_key", "api_key");
                         tomlMap.put("max_tokens", "1024");
                         tomlMap.put("n", "1");
                         TomlWriter writer = new TomlWriter();
                         try {
-                            writer.write(toml, new File(CONFIG));
+                            // 写入配置文件
+                            TomlUtils.writeTomlToFile(tomlMap, CONFIG);
                             context.getSource().sendFeedback(new TranslatableText("minegpt.set.default", CONFIG), true);
                         } catch (IOException e) {
+                            // 捕获并处理异常
                             context.getSource().sendError(new TranslatableText("minegpt.error.saveconfig"));
                             LOGGER.error("Failed to save config file: {}", e.getMessage());
                         }
@@ -100,17 +101,6 @@ public class Command implements ModInitializer {
                         context.getSource().sendFeedback(new TranslatableText("minegpt.reload.config"), true);
                         return 1;
                     }));
-/*
-            mgptCommand.then(CommandManager.literal("langtest")
-                    .executes(context -> {
-                        context.getSource().sendError(new TranslatableText("minegpt.error.apikey"));
-                        context.getSource().sendFeedback(new TranslatableText("minegpt.set.default"), true);
-                        context.getSource().sendFeedback(new TranslatableText("minegpt.error.saveconfig", CONFIG), true);
-                        context.getSource().sendFeedback(new TranslatableText("minegpt.set.configapikey", CONFIG), true);
-                        context.getSource().sendFeedback(new TranslatableText("minegpt.reload.config"), true);
-                        return 1;
-                    }));
- */
 
             dispatcher.register(mgptCommand);
 
