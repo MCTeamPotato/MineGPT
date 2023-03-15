@@ -77,16 +77,12 @@ public class TomlUtils implements ModInitializer {
         N = toml.getString("n");
     }
     public static void writeTomlToFile(Map<String, Object> map, String path) throws IOException {
-        // 创建一个TomlWriter对象
         TomlWriter writer = new TomlWriter();
         // 创建一个File对象
         File file = new File(path);
-        // 读取原有文件中的API_KEY的值
         Toml toml = new Toml().read(file);
         String API_KEY = toml.getString("API_KEY");
-        // 调用writer.write方法将map写入到file中
         writer.write(map, file);
-        // 将API_KEY的值追加到文件末尾
         FileWriter fileWriter = new FileWriter(file, true);
         fileWriter.write("\napi_key = \"" + API_KEY + "\"\n");
         fileWriter.close();
@@ -102,7 +98,6 @@ public class TomlUtils implements ModInitializer {
         LOGGER.info("[Fabric-MineGPT] Your ChatGPT Config Info:");
         LOGGER.info("-----------------------------------------");
         LOGGER.info("Endpoint: {}", ENDPOINT);
-        //LOGGER.info("API key: {}" , API_KEY);
         LOGGER.info("Model: {}" , MODEL);
         LOGGER.info("Max tokens: {}" , MAX_TOKENS);
         LOGGER.info("N: {}" , N);
