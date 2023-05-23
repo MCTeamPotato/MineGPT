@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "id": "minegpt",
-  "version": "1.1.1",
+  "version": "1.2.0",
 
   "name": "MineGPT",
   "description": "OpenAI API go MCchat",
@@ -20,26 +20,31 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "team.teampotato.chatgpt.CreateConfig",
-      "team.teampotato.chatgpt.ChatGPT",
-      "team.teampotato.chatgpt.TomlUtils",
-      "team.teampotato.chatgpt.Command"
+      "team.teampotato.MineGPT.MGPT",
+      "team.teampotato.MineGPT.Common.Config"
+    ],
+    "server": [
+      "team.teampotato.MineGPT.Server.ServerCommandConfig",
+      "team.teampotato.MineGPT.Server.ServerCommandGPT"
+    ],
+    "client": [
+      "team.teampotato.MineGPT.Client.ClientCommandConfig",
+      "team.teampotato.MineGPT.Client.ClientCommandGPT",
+      "team.teampotato.MineGPT.Client.GUI.PingGUI",
+      "team.teampotato.MineGPT.Client.GUI.Ping"
     ]
   },
 
   "depends": {
     "fabricloader": ">=0.13.3",
     "fabric": "*",
-    "minecraft": ">=1.18.2",
+    "minecraft": "=1.19.2",
     "java": ">=17"
   },
   "suggests": {
     "another-mod": "*"
   },
   "jars": [
-    {
-      "file": "META-INF/jar/toml4j-0.7.2.jar"
-    },
     {
       "file": "META-INF/jar/json-20210307.jar"
       }

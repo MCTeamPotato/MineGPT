@@ -12,16 +12,18 @@ group = project.maven_group
 
 repositories {
 
+
+
 }
 
 
 dependencies {
 
 	implementation 'org.json:json:20210307'
-	implementation 'com.moandjiezana.toml:toml4j:0.7.2'
 
 
-	modImplementation "com.fasterxml.jackson.core:jackson-databind:2.12.4"
+
+	//modImplementation "com.fasterxml.jackson.core:jackson-databind:2.12.4"
 
 	// To change the versions see the gradle.properties file
 	minecraft "com.mojang:minecraft:${project.minecraft_version}"
@@ -30,6 +32,9 @@ dependencies {
 
 	// Fabric API. This is technically optional, but you probably want it anyway.
 	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+
+
+
 }
 
 processResources {
