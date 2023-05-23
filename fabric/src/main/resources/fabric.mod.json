@@ -1,0 +1,28 @@
+{
+  "schemaVersion": 1,
+  "id": "minegpt",
+  "version": "${version}",
+  "name": "MineGPT",
+  "description": "OpenAI API go MCchat",
+  "authors": [
+    "TeamPotato",
+    "Awei"
+  ],
+  "contact": {
+    "homepage": "https://github.com/MCTeamPotato",
+    "sources": "https://github.com/MCTeamPotato/MineGPT"
+  },
+  "license": "GPLv3",
+  "icon": "icon.png",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "team.teampotato.chatgpt.fabric.MineGPTFabric"
+    ]
+  },
+  "depends": {
+    "fabric": "*",
+    "minecraft": ">=1.18",
+    "architectury": "*"
+  }
+}
