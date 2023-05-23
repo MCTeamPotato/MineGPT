@@ -1,68 +1,44 @@
 plugins {
-	id 'fabric-loom' version '1.1-SNAPSHOT'
-	id 'maven-publish'
+    id "architectury-plugin" version "3.4-SNAPSHOT"
+    id "dev.architectury.loom" version "1.1-SNAPSHOT" apply false
 }
 
-sourceCompatibility = JavaVersion.VERSION_17
-targetCompatibility = JavaVersion.VERSION_17
-
-archivesBaseName = project.archives_base_name
-version = project.mod_version
-group = project.maven_group
-
-repositories {
-
+architectury {
+    minecraft = rootProject.minecraft_version
 }
 
+subprojects {
+    apply plugin: "dev.architectury.loom"
 
-dependencies {
+    dependencies {
+        minecraft "com.mojang:minecraft:${rootProject.minecraft_version}"
+        mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
 
-	implementation 'org.json:json:20210307'
-	implementation 'com.moandjiezana.toml:toml4j:0.7.2'
+        implementation('org.json:json:20220320')
 
-
-	modImplementation "com.fasterxml.jackson.core:jackson-databind:2.12.4"
-
-	// To change the versions see the gradle.properties file
-	minecraft "com.mojang:minecraft:${project.minecraft_version}"
-	mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
-	modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
-
-	// Fabric API. This is technically optional, but you probably want it anyway.
-	modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+        //modImplementation "com.fasterxml.jackson.core:jackson-databind:2.12.4"
+    }
 }
 
-processResources {
-	inputs.property "version", project.version
+allprojects {
+    apply plugin: "java"
+    apply plugin: "architectury-plugin"
+    apply plugin: "maven-publish"
 
-	filesMatching("fabric.mod.json") {
-		expand "version": project.version
-	}
-}
+    archivesBaseName = rootProject.archives_base_name
+    version = "${rootProject.mod_version}-${rootProject.minecraft_version}"
+    group = rootProject.maven_group
 
-tasks.withType(JavaCompile).configureEach {
-	// Minecraft 1.18 (1.18-pre2) upwards uses Java 17.
-	it.options.release = 17
-}
+    repositories {
 
-java {
-	withSourcesJar()
-}
+    }
 
-jar {
+    tasks.withType(JavaCompile) {
+        options.encoding = "UTF-8"
+        options.release = 17
+    }
 
-}
-
-
-// configure the maven publication
-publishing {
-	publications {
-		mavenJava(MavenPublication) {
-			from components.java
-		}
-	}
-
-	// See https://docs.gradle.org/current/userguide/publishing_maven.html for information on how to set up publishing.
-	repositories {
-	}
+    java {
+        withSourcesJar()
+    }
 }

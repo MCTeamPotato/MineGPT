@@ -1,0 +1,17 @@
+{
+  "minegpt.gui.ping.title": "Can you connect to %s:%s",
+  "minegpt.client.command.ping": "You opened the network test GUI.",
+  "minegpt.server.command.help.1": "Configuration file reloaded.",
+  "minegpt.server.command.help.2": "===========[MineGPT Help - Server]===========",
+  "minegpt.server.command.help.3": "/chatgpt '<message>' Send a message to GPT and get a response",
+  "minegpt.server.command.help.4": "/mgpt config reload Reload the configuration",
+  "minegpt.server.command.help.5": "/mgpt help Help",
+  "minegpt.server.command.help.6": "===========[MineGPT Help - Server]===========",
+  "minegpt.client.command.help.1": "===========[MineGPT Help - Client]===========",
+  "minegpt.client.command.help.2": "/chatgpt '<message>' Send a message to GPT and get a response",
+  "minegpt.client.command.help.3": "/mgpt config reload Reload the configuration",
+  "minegpt.client.command.help.4": "/mgpt pingtest APILink address test (incomplete)",
+  "minegpt.client.command.help.5": "/mgpt help Help",
+  "minegpt.client.command.help.6": "===========[MineGPT Help - Client]===========",
+  "minegpt.client.command.reload": "Configuration file reloaded."
+}

@@ -1,0 +1,17 @@
+{
+  "minegpt.gui.ping.title": "是否能连接到%s:%s",
+  "minegpt.client.command.ping": "你打开了网络测试GUI。",
+  "minegpt.server.command.help.1": "已重新加载配置文件。",
+  "minegpt.server.command.help.2": "===========[MineGPT-帮助-服务器]===========",
+  "minegpt.server.command.help.3": "/chatgpt '<信息>' 给GPT发送信息并且返回GPT信息",
+  "minegpt.server.command.help.4": "/mgpt config reload 重载配置",
+  "minegpt.server.command.help.5": "/mgpt help 帮助",
+  "minegpt.server.command.help.6": "===========[MineGPT-帮助-服务器]===========",
+  "minegpt.client.command.help.1": "===========[MineGPT-帮助-客户端]===========",
+  "minegpt.client.command.help.2": "/chatgpt '<信息>' 给GPT发送信息并且返回GPT信息",
+  "minegpt.client.command.help.3": "/mgpt config reload 重载配置",
+  "minegpt.client.command.help.4": "/mgpt pingtest APILink地址测试(尚未写完)",
+  "minegpt.client.command.help.5": "/mgpt help 帮助",
+  "minegpt.client.command.help.6": "===========[MineGPT-帮助-客户端]===========",
+  "minegpt.client.command.reload": "已重新加载配置文件。"
+}

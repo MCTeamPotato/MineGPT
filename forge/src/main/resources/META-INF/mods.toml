@@ -1,0 +1,37 @@
+modLoader = "javafml"
+loaderVersion = "[40,)"
+#issueTrackerURL = ""
+license = "Insert License Here"
+
+[[mods]]
+modId = "minegpt"
+version = "${version}"
+displayName = "MineGPT"
+displayURL = "https://github.com/MCTeamPotato/MineGPT"
+logoFile = "icon.png"
+authors = "TeamPotato, Awei"
+description = '''
+OpenAI API go MCchat
+'''
+#logoFile = ""
+
+[[dependencies.minegpt]]
+modId = "forge"
+mandatory = true
+versionRange = "[40,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.minegpt]]
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19,)"
+ordering = "NONE"
+side = "BOTH"
+
+[[dependencies.minegpt]]
+modId = "architectury"
+mandatory = true
+versionRange = "[6,)"
+ordering = "AFTER"
+side = "BOTH"
