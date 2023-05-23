@@ -25,13 +25,13 @@ side = "BOTH"
 [[dependencies.minegpt]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.18,)"
+versionRange = "[1.19,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.minegpt]]
 modId = "architectury"
 mandatory = true
-versionRange = "[4,)"
+versionRange = "[6,)"
 ordering = "AFTER"
 side = "BOTH"

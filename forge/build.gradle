@@ -7,6 +7,17 @@ architectury {
     forge()
 }
 
+loom {
+    accessWidenerPath = project(":common").loom.accessWidenerPath
+
+    forge {
+        convertAccessWideners = true
+        extraAccessWideners.add loom.accessWidenerPath.get().asFile.name
+
+        mixinConfig "minegpt-forge.mixins.json"
+    }
+}
+
 project.archivesBaseName = rootProject.archivesBaseName + "-Forge"
 
 configurations {
@@ -35,6 +46,7 @@ processResources {
 
 shadowJar {
     exclude "fabric.mod.json"
+    exclude "architectury.common.json"
 
     configurations = [project.configurations.shadowCommon]
     classifier "dev-shadow"

@@ -17,12 +17,12 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "team.teampotato.chatgpt.fabric.MineGPTFabric"
+      "team.teampotato.minegpt.fabric.MineGPTFabric"
     ]
   },
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.18",
+    "minecraft": ">=1.19",
     "architectury": "*"
   }
 }
