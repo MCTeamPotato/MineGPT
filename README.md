@@ -22,7 +22,7 @@ Here's an example:
 
 "API_Link": "https://api.openai.com/v1/completions",  // This is the API url
 
-"API_KEY": "你的OpenAI APIKey",  // This is your OpenAI API key  
+"API_KEY": "Your OpenAI APIKey",  // This is your OpenAI API key  
 
 "MODEL": "text-davinci-003", // This is the AI model. I chose the Davinci model.  
 
