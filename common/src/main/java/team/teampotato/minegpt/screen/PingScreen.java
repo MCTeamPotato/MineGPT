@@ -2,10 +2,12 @@ package team.teampotato.minegpt.screen;
 
 import net.fabricmc.api.EnvType;
 import net.fabricmc.api.Environment;
+import net.minecraft.client.gui.DrawContext;
 import net.minecraft.client.gui.screen.Screen;
 import net.minecraft.client.gui.widget.ButtonWidget;
 import net.minecraft.client.util.math.MatrixStack;
 import net.minecraft.text.Text;
+import org.joml.Matrix4f;
 import team.teampotato.minegpt.config.Config;
 
 @Environment(EnvType.CLIENT)
@@ -30,13 +32,14 @@ public class PingScreen extends Screen {
         }).dimensions(centerX, centerY, buttonWidth, buttonHeight).build());
     }
     @Override
-    public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
-        this.renderBackground(matrices);
-        super.render(matrices, mouseX, mouseY, delta);
+    public void render(DrawContext context, int mouseX, int mouseY, float delta) {
+        this.renderBackground(context);
+        super.render(context, mouseX, mouseY, delta);
         Text text = Text.translatable("minegpt.gui.ping.title", Config.ENDPOINT, Ping.status);
         int textX = (this.width - this.textRenderer.getWidth(text)) / 2;
         int textY = this.height / 4;
-        this.textRenderer.drawWithShadow(matrices, text, textX, textY, 0xFFFFFF);
+        //this.textRenderer.drawWithShadow(matrices, text, textX, textY, 0xFFFFFF);
+        this.textRenderer.drawWithOutline(text, textX, textY, 0, 0xFFFFFF, );
     }
 
     public void addCustomButton(ButtonWidget button) {

@@ -39,7 +39,6 @@ import team.teampotato.minegpt.forge.forged.api.ClientCommandRegistrationEvent;
 import team.teampotato.minegpt.forge.forged.api.FabricClientCommandSource;
 import team.teampotato.minegpt.forge.forged.impl.ClientCommandInternals;
 
-
 @Mixin(ClientPlayNetworkHandler.class)
 abstract class ClientPlayNetworkHandlerMixin {
     @Shadow

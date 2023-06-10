@@ -1,5 +1,5 @@
 modLoader = "javafml"
-loaderVersion = "[44,)"
+loaderVersion = "[46,)"
 license = "GPLv3"
 
 [[mods]]
@@ -16,20 +16,20 @@ Chat with ChatGPT in Minecraft.
 [[dependencies.minegpt]]
 modId = "forge"
 mandatory = true
-versionRange = "[44,)"
+versionRange = "[46,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.minegpt]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.3,)"
+versionRange = "[1.20,)"
 ordering = "NONE"
 side = "BOTH"
 
 [[dependencies.minegpt]]
 modId = "architectury"
 mandatory = true
-versionRange = "[8,)"
+versionRange = "[9,)"
 ordering = "AFTER"
 side = "BOTH"

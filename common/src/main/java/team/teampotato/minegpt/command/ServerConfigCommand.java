@@ -14,12 +14,12 @@ public class ServerConfigCommand {
         dispatcher.register(CommandManager.literal("mgpt")
                 .then(CommandManager.literal("help")
                         .executes(context -> {
-                            context.getSource().sendFeedback(Text.translatable("minegpt.server.command.help.1").formatted(Formatting.GREEN),false);
-                            context.getSource().sendFeedback(Text.translatable("minegpt.server.command.help.2").formatted(Formatting.GREEN),false);
-                            context.getSource().sendFeedback(Text.translatable("minegpt.server.command.help.3").formatted(Formatting.GREEN),false);
-                            context.getSource().sendFeedback(Text.translatable("minegpt.server.command.help.4").formatted(Formatting.GREEN),false);
-                            context.getSource().sendFeedback(Text.translatable("minegpt.server.command.help.5").formatted(Formatting.GREEN),false);
-                            context.getSource().sendFeedback(Text.translatable("minegpt.server.command.help.6").formatted(Formatting.GREEN),false);
+                            context.getSource().sendFeedback(() -> Text.translatable("minegpt.server.command.help.1").formatted(Formatting.GREEN),false);
+                            context.getSource().sendFeedback(() -> Text.translatable("minegpt.server.command.help.2").formatted(Formatting.GREEN),false);
+                            context.getSource().sendFeedback(() -> Text.translatable("minegpt.server.command.help.3").formatted(Formatting.GREEN),false);
+                            context.getSource().sendFeedback(() -> Text.translatable("minegpt.server.command.help.4").formatted(Formatting.GREEN),false);
+                            context.getSource().sendFeedback(() -> Text.translatable("minegpt.server.command.help.5").formatted(Formatting.GREEN),false);
+                            context.getSource().sendFeedback(() -> Text.translatable("minegpt.server.command.help.6").formatted(Formatting.GREEN),false);
 
 
                             return 1;
@@ -29,9 +29,7 @@ public class ServerConfigCommand {
                 .then(CommandManager.literal("reload")
                         .executes(context -> {
                             Config.loadConfig();
-                            MinecraftClient.getInstance().execute(() -> {
-                                context.getSource().sendFeedback(Text.translatable("minegpt.server.command.reload").formatted(Formatting.BLUE),false);
-                            });
+                            MinecraftClient.getInstance().execute(() -> context.getSource().sendFeedback(() -> Text.translatable("minegpt.server.command.reload").formatted(Formatting.BLUE),false));
                             return 1;
                         }))
 

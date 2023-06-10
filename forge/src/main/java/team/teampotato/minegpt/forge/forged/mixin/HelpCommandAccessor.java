@@ -17,7 +17,6 @@
 package team.teampotato.minegpt.forge.forged.mixin;
 
 import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
-
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.gen.Accessor;
 
