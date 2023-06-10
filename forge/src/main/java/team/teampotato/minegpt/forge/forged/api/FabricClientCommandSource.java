@@ -24,13 +24,10 @@ import net.minecraft.entity.Entity;
 import net.minecraft.text.Text;
 import net.minecraft.util.math.Vec2f;
 import net.minecraft.util.math.Vec3d;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 
 /**
  * Extensions to {@link CommandSource} for client-sided commands.
  */
-@OnlyIn(Dist.CLIENT)
 public interface FabricClientCommandSource extends CommandSource {
     /**
      * Sends a feedback message to the player.

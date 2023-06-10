@@ -20,8 +20,7 @@ import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.ArgumentType;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import com.mojang.brigadier.builder.RequiredArgumentBuilder;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
+
 import org.jetbrains.annotations.Nullable;
 
 import team.teampotato.minegpt.forge.forged.impl.ClientCommandInternals;
@@ -62,7 +61,6 @@ import team.teampotato.minegpt.forge.forged.impl.ClientCommandInternals;
  * }
  * </pre>
  */
-@OnlyIn(Dist.CLIENT)
 public final class ClientCommandManager {
     private ClientCommandManager() {
     }

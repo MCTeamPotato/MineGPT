@@ -1,12 +1,15 @@
 package team.teampotato.minegpt.forge.command;
 
 import com.mojang.brigadier.CommandDispatcher;
+
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+
 import team.teampotato.minegpt.config.Config;
 import team.teampotato.minegpt.forge.forged.api.ClientCommandManager;
 import team.teampotato.minegpt.forge.forged.api.FabricClientCommandSource;

@@ -1,9 +1,11 @@
 package team.teampotato.minegpt.forge;
 
 import dev.architectury.platform.forge.EventBuses;
-import team.teampotato.minegpt.MineGPT;
+
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+
+import team.teampotato.minegpt.MineGPT;
 import team.teampotato.minegpt.forge.command.ClientCommand;
 import team.teampotato.minegpt.forge.command.ClientConfigCommand;
 import team.teampotato.minegpt.forge.forged.api.ClientCommandRegistrationEvent;

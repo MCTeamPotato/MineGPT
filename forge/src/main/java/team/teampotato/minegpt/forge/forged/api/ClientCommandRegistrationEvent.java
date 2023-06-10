@@ -20,6 +20,7 @@ import com.mojang.brigadier.CommandDispatcher;
 
 import dev.architectury.event.Event;
 import dev.architectury.event.EventFactory;
+
 import net.minecraft.command.CommandRegistryAccess;
 
 /**

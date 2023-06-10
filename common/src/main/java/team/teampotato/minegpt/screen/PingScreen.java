@@ -10,8 +10,10 @@ import team.teampotato.minegpt.config.Config;
 
 @Environment(EnvType.CLIENT)
 public class PingScreen extends Screen {
+    private static final Text PING_SCREEN_TITLE = Text.literal("PingGUI");
+    private static final Text Disk_SafeMode_YES_BUTTON_TEXT = Text.translatable("MultiuniverseEonAdventureCore.Disk.SafeMode.YES");
     public PingScreen() {
-        super(Text.literal("PingGUI"));
+        super(PING_SCREEN_TITLE);
     }
     @Override
     protected void init() {
@@ -22,11 +24,10 @@ public class PingScreen extends Screen {
         int buttonHeight = 20; //高度
         int centerX = (this.width) / 2;
         int centerY = (this.height) / 2;
-        this.addCustomButton(new ButtonWidget(centerX, centerY, buttonWidth, buttonHeight, Text.translatable("MultiuniverseEonAdventureCore.Disk.SafeMode.YES"), button -> {
+        this.addCustomButton(ButtonWidget.builder(Disk_SafeMode_YES_BUTTON_TEXT, (button) -> {
             assert this.client != null;
             this.client.setScreen(null); // 返回
-
-        }));
+        }).dimensions(centerX, centerY, buttonWidth, buttonHeight).build());
     }
     @Override
     public void render(MatrixStack matrices, int mouseX, int mouseY, float delta) {
@@ -39,6 +40,6 @@ public class PingScreen extends Screen {
     }
 
     public void addCustomButton(ButtonWidget button) {
-            this.addDrawableChild(button);
-        }
+        this.addDrawableChild(button);
+    }
 }

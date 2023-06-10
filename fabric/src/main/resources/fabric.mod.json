@@ -3,7 +3,7 @@
   "id": "minegpt",
   "version": "${version}",
   "name": "MineGPT",
-  "description": "OpenAI API go MCchat",
+  "description": "Chat with ChatGPT in Minecraft.",
   "authors": [
     "TeamPotato",
     "Awei"
@@ -22,7 +22,7 @@
   },
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.19",
+    "minecraft": ">=1.19.3",
     "architectury": "*"
   }
 }
