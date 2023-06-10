@@ -5,8 +5,10 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+
 import team.teampotato.minegpt.config.Config;
 import team.teampotato.minegpt.forge.forged.api.ClientCommandManager;
 import team.teampotato.minegpt.forge.forged.api.FabricClientCommandSource;
@@ -41,9 +43,7 @@ public class ClientCommand {
                 .then(ClientCommandManager.literal("reload")
                         .executes(context -> {
                             Config.loadConfig();
-                            MinecraftClient.getInstance().execute(() -> {
-                                context.getSource().sendFeedback(Text.translatable("minegpt.client.command.reload").formatted(Formatting.BLUE));
-                            });
+                            MinecraftClient.getInstance().execute(() -> context.getSource().sendFeedback(Text.translatable("minegpt.client.command.reload").formatted(Formatting.BLUE)));
                             return 1;
                         }))
 

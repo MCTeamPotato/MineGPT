@@ -9,11 +9,11 @@ import java.net.InetAddress;
 
 @Environment(EnvType.CLIENT)
 public class Ping {
-    public void onInitializeClient() {
+    public static void onInitializeClient() {
         ipDetection(Config.Ping);
     }
     public static boolean status = false;
-    public Boolean ipDetection(Integer timeout) {
+    public static boolean ipDetection(int timeout) {
         try {
             status = InetAddress.getByName(Config.ENDPOINT).isReachable(timeout);
         } catch (IOException e) {

@@ -7,6 +7,7 @@ import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+
 import team.teampotato.minegpt.config.Config;
 
 public class ServerConfigCommand {
@@ -29,9 +30,7 @@ public class ServerConfigCommand {
                 .then(CommandManager.literal("reload")
                         .executes(context -> {
                             Config.loadConfig();
-                            MinecraftClient.getInstance().execute(() -> {
-                                context.getSource().sendFeedback(Text.translatable("minegpt.server.command.reload").formatted(Formatting.BLUE),false);
-                            });
+                            MinecraftClient.getInstance().execute(() -> context.getSource().sendFeedback(Text.translatable("minegpt.server.command.reload").formatted(Formatting.BLUE),false));
                             return 1;
                         }))
 

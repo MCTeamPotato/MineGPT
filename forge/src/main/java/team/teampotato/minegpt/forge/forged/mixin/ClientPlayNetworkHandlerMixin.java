@@ -17,6 +17,7 @@
 package team.teampotato.minegpt.forge.forged.mixin;
 
 import com.mojang.brigadier.CommandDispatcher;
+
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;

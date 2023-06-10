@@ -3,10 +3,9 @@
   "id": "minegpt",
   "version": "${version}",
   "name": "MineGPT",
-  "description": "OpenAI API go MCchat",
+  "description": "Chat with ChatGPT in Minecraft.",
   "authors": [
-    "TeamPotato",
-    "Awei"
+    "TeamPotato", "Awei", "TexTrue"
   ],
   "contact": {
     "homepage": "https://github.com/MCTeamPotato",
@@ -18,11 +17,14 @@
   "entrypoints": {
     "main": [
       "team.teampotato.minegpt.fabric.MineGPTFabric"
+    ],
+    "client": [
+      "team.teampotato.minegpt.fabric.MineGPTClientFabric"
     ]
   },
   "depends": {
     "fabric": "*",
-    "minecraft": ">=1.19",
+    "minecraft": "1.19~1.19.2",
     "architectury": "*"
   }
 }

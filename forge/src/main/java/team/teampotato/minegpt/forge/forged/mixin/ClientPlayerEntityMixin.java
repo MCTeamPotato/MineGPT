@@ -24,6 +24,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.text.Text;
+
 import team.teampotato.minegpt.forge.forged.impl.ClientCommandInternals;
 
 

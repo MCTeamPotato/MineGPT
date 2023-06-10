@@ -11,6 +11,7 @@ import net.minecraft.server.command.ServerCommandSource;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
 import org.json.JSONObject;
+
 import team.teampotato.minegpt.MineGPT;
 import team.teampotato.minegpt.config.Config;
 
