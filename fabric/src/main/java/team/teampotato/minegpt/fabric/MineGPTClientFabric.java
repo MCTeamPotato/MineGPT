@@ -2,6 +2,7 @@ package team.teampotato.minegpt.fabric;
 
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.fabric.api.client.command.v2.ClientCommandRegistrationCallback;
+
 import team.teampotato.minegpt.MineGPTClient;
 import team.teampotato.minegpt.fabric.command.ClientCommand;
 import team.teampotato.minegpt.fabric.command.ClientConfigCommand;
