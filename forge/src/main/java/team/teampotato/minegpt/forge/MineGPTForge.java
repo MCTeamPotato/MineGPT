@@ -12,8 +12,8 @@ import team.teampotato.minegpt.MineGPT;
 @Mod(MineGPT.MOD_ID)
 public class MineGPTForge {
     public MineGPTForge() {
-        IEventBus modEventBus = EventBuses.getModEventBus(MineGPT.MOD_ID).get();
-        EventBuses.registerModEventBus(MineGPT.MOD_ID, FMLJavaModLoadingContext.get().getModEventBus());
+        IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
+        EventBuses.registerModEventBus(MineGPT.MOD_ID, modEventBus);
 
         modEventBus.addListener(MineGPTForge::onInitialize);
         modEventBus.addListener(MineGPTClientForge::onInitializeClient);
