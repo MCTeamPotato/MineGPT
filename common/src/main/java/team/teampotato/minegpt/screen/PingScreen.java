@@ -38,8 +38,7 @@ public class PingScreen extends Screen {
         Text text = Text.translatable("minegpt.gui.ping.title", Config.ENDPOINT, Ping.status);
         int textX = (this.width - this.textRenderer.getWidth(text)) / 2;
         int textY = this.height / 4;
-        //this.textRenderer.drawWithShadow(matrices, text, textX, textY, 0xFFFFFF);
-        this.textRenderer.drawWithOutline(text, textX, textY, 0, 0xFFFFFF, );
+        context.drawTextWithShadow(this.textRenderer, text, textX, textY, 0xFFFFFF);
     }
 
     public void addCustomButton(ButtonWidget button) {
