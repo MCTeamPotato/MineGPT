@@ -10,9 +10,9 @@ Chat with ChatGPT in Minecraft.
 
 </div></center>
 
-**此分支为MineGPT Architectury分支，此分支尚不稳定，可能会造成崩溃问题。Forge侧使用了Fabric Command API (Client side)代码。**
+**Forge侧使用了Fabric Command API (Client side)代码。**
 
-**This branch is the MineGPT Architectury branch, which is not yet stable and may cause crashing problems. the Forge side uses the Fabric Command API (Client side) code.**
+**The Forge side uses the Fabric Command API (Client side) code.**
 
 ## 使用-中文
 
