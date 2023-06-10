@@ -8,7 +8,7 @@ version = "${version}"
 displayName = "MineGPT"
 displayURL = "https://github.com/MCTeamPotato/MineGPT"
 logoFile = "icon.png"
-authors = "TeamPotato, Awei"
+authors = "TeamPotato, Awei, TexTrue"
 description = '''
 Chat with ChatGPT in Minecraft.
 '''

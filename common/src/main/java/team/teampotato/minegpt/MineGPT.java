@@ -6,9 +6,6 @@ import org.slf4j.LoggerFactory;
 import team.teampotato.minegpt.command.ServerCommand;
 import team.teampotato.minegpt.command.ServerConfigCommand;
 import team.teampotato.minegpt.config.Config;
-import team.teampotato.minegpt.screen.Ping;
-
-import java.io.File;
 
 public class MineGPT {
     public static final String MOD_ID = "minegpt";

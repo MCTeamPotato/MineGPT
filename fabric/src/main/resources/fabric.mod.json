@@ -5,8 +5,7 @@
   "name": "MineGPT",
   "description": "Chat with ChatGPT in Minecraft.",
   "authors": [
-    "TeamPotato",
-    "Awei"
+    "TeamPotato", "Awei", "TexTrue"
   ],
   "contact": {
     "homepage": "https://github.com/MCTeamPotato",
@@ -18,6 +17,9 @@
   "entrypoints": {
     "main": [
       "team.teampotato.minegpt.fabric.MineGPTFabric"
+    ],
+    "client": [
+      "team.teampotato.minegpt.fabric.MineGPTClientFabric"
     ]
   },
   "depends": {
