@@ -14,10 +14,9 @@
  * limitations under the License.
  */
 
-package team.teampotato.minegpt.forge.forged.mixin;
+package team.teampotato.minegpt.forge.forged.mixin.client;
 
 import com.mojang.brigadier.CommandDispatcher;
-
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -27,13 +26,10 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import net.minecraft.client.network.ClientCommandSource;
 import net.minecraft.client.network.ClientPlayNetworkHandler;
-import net.minecraft.command.CommandRegistryAccess;
 import net.minecraft.command.CommandSource;
 import net.minecraft.network.packet.s2c.play.CommandTreeS2CPacket;
-import net.minecraft.network.packet.s2c.play.GameJoinS2CPacket;
 
-import team.teampotato.minegpt.forge.forged.api.ClientCommandRegistrationEvent;
-import team.teampotato.minegpt.forge.forged.api.FabricClientCommandSource;
+import team.teampotato.minegpt.forge.forged.api.client.FabricClientCommandSource;
 import team.teampotato.minegpt.forge.forged.impl.ClientCommandInternals;
 
 @Mixin(ClientPlayNetworkHandler.class)
@@ -44,14 +40,6 @@ abstract class ClientPlayNetworkHandlerMixin {
     @Shadow
     @Final
     private ClientCommandSource commandSource;
-
-    @Inject(method = "onGameJoin", at = @At("RETURN"))
-    private void onGameJoin(GameJoinS2CPacket packet, CallbackInfo info) {
-        final CommandDispatcher<FabricClientCommandSource> dispatcher = new CommandDispatcher<>();
-        ClientCommandInternals.setActiveDispatcher(dispatcher);
-        ClientCommandRegistrationEvent.EVENT.invoker().register(dispatcher, new CommandRegistryAccess(packet.registryManager()));
-        ClientCommandInternals.finalizeInit();
-    }
 
     @SuppressWarnings({"unchecked", "rawtypes"})
     @Inject(method = "onCommandTree", at = @At("RETURN"))

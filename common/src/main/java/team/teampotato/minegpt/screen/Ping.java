@@ -12,6 +12,7 @@ public class Ping {
     public static void onInitializeClient() {
         ipDetection(Config.Ping);
     }
+
     public static boolean status = false;
     public static boolean ipDetection(int timeout) {
         try {

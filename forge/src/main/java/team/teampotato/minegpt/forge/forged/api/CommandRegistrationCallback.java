@@ -21,23 +21,28 @@ import com.mojang.brigadier.CommandDispatcher;
 import dev.architectury.event.Event;
 import dev.architectury.event.EventFactory;
 
-import net.minecraft.command.CommandRegistryAccess;
+import net.minecraft.server.command.ServerCommandSource;
 
 /**
- * Callback for when client commands are registered to the dispatcher.
+ * Callback for when a server registers all commands.
  *
  * <p>To register some commands, you would register an event listener and implement the callback.
  *
- * <p>See {@link ClientCommandManager} for more details and an example.
+ * <pre><code>
+ * CommandRegistrationCallback.EVENT.register((dispatcher, dedicated) -> {
+ *     // For example, this command is only registered on an integrated server
+ *     if (!dedicated) dispatcher.register(CommandManager.literal("integrated_command").executes(context -> {...}));
+ * })};
+ * </code></pre>
  */
-public interface ClientCommandRegistrationEvent {
-    Event<ClientCommandRegistrationEvent> EVENT = EventFactory.createEventResult();
+public interface CommandRegistrationCallback {
+    Event<CommandRegistrationCallback> EVENT = EventFactory.createEventResult();
 
     /**
-     * Called when registering client commands.
+     * Called when the server is registering commands.
      *
-     * @param dispatcher the command dispatcher to register commands to
-     * @param registryAccess object exposing access to the game's registries
+     * @param dispatcher the command dispatcher to register commands to.
+     * @param dedicated whether the server this command is being registered on is a dedicated server.
      */
-    void register(CommandDispatcher<FabricClientCommandSource> dispatcher, CommandRegistryAccess registryAccess);
+    void register(CommandDispatcher<ServerCommandSource> dispatcher, boolean dedicated);
 }

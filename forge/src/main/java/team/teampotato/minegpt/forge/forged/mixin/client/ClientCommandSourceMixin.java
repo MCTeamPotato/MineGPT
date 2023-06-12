@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package team.teampotato.minegpt.forge.forged.mixin;
+package team.teampotato.minegpt.forge.forged.mixin.client;
 
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -24,10 +24,13 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientCommandSource;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
+import net.minecraft.network.MessageType;
+import net.minecraft.text.LiteralText;
 import net.minecraft.text.Text;
 import net.minecraft.util.Formatting;
+import net.minecraft.util.Util;
 
-import team.teampotato.minegpt.forge.forged.api.FabricClientCommandSource;
+import team.teampotato.minegpt.forge.forged.api.client.FabricClientCommandSource;
 
 @Mixin(ClientCommandSource.class)
 abstract class ClientCommandSourceMixin implements FabricClientCommandSource {
@@ -37,13 +40,12 @@ abstract class ClientCommandSourceMixin implements FabricClientCommandSource {
 
     @Override
     public void sendFeedback(Text message) {
-        this.client.inGameHud.getChatHud().addMessage(message);
-        this.client.getNarratorManager().narrate(message);
+        client.inGameHud.addChatMessage(MessageType.SYSTEM, message, Util.NIL_UUID);
     }
 
     @Override
     public void sendError(Text message) {
-        sendFeedback(Text.literal("").append(message).formatted(Formatting.RED));
+        client.inGameHud.addChatMessage(MessageType.SYSTEM, new LiteralText("").append(message).formatted(Formatting.RED), Util.NIL_UUID);
     }
 
     @Override

@@ -14,18 +14,22 @@
  * limitations under the License.
  */
 
-package team.teampotato.minegpt.forge.forged.mixin;
+package team.teampotato.minegpt.forge.forged.mixin.client;
 
-import com.mojang.brigadier.exceptions.SimpleCommandExceptionType;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.gen.Accessor;
+import org.spongepowered.asm.mixin.injection.At;
+import org.spongepowered.asm.mixin.injection.Inject;
+import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import net.minecraft.server.command.HelpCommand;
+import net.minecraft.client.MinecraftClient;
+import net.minecraft.client.RunArgs;
 
-@Mixin(HelpCommand.class)
-public interface HelpCommandAccessor {
-    @Accessor("FAILED_EXCEPTION")
-    static SimpleCommandExceptionType getFailedException() {
-        throw new AssertionError("mixin");
+import team.teampotato.minegpt.forge.forged.impl.ClientCommandInternals;
+
+@Mixin(MinecraftClient.class)
+abstract class MinecraftClientMixin {
+    @Inject(method = "<init>", at = @At("RETURN"))
+    private void onConstruct(RunArgs args, CallbackInfo info) {
+        ClientCommandInternals.finalizeInit();
     }
 }

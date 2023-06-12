@@ -14,32 +14,22 @@
  * limitations under the License.
  */
 
-package team.teampotato.minegpt.forge.forged.mixin;
+package team.teampotato.minegpt.forge.forged.mixin.client;
 
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
-import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import net.minecraft.client.network.ClientPlayerEntity;
-import net.minecraft.text.Text;
 
 import team.teampotato.minegpt.forge.forged.impl.ClientCommandInternals;
 
-
 @Mixin(ClientPlayerEntity.class)
 abstract class ClientPlayerEntityMixin {
-    @Inject(method = "sendCommand(Ljava/lang/String;)Z", at = @At("HEAD"), cancellable = true)
-    private void onSendCommand(String command, CallbackInfoReturnable<Boolean> cir) {
-        if (ClientCommandInternals.executeCommand(command)) {
-            cir.setReturnValue(true);
-        }
-    }
-
-    @Inject(method = "sendCommand(Ljava/lang/String;Lnet/minecraft/text/Text;)V", at = @At("HEAD"), cancellable = true)
-    private void onSendCommand(String command, Text preview, CallbackInfo info) {
-        if (ClientCommandInternals.executeCommand(command)) {
+    @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
+    private void onSendChatMessage(String message, CallbackInfo info) {
+        if (ClientCommandInternals.executeCommand(message)) {
             info.cancel();
         }
     }

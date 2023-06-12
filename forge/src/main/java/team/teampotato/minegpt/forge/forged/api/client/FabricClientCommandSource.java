@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package team.teampotato.minegpt.forge.forged.api;
+package team.teampotato.minegpt.forge.forged.api.client;
 
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientPlayerEntity;

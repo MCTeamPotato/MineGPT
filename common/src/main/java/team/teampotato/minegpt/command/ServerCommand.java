@@ -5,10 +5,10 @@ import com.google.gson.JsonObject;
 import com.google.gson.JsonParser;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.arguments.StringArgumentType;
-import net.minecraft.command.CommandRegistryAccess;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.server.command.CommandManager;
 import net.minecraft.server.command.ServerCommandSource;
-import net.minecraft.text.Text;
+import net.minecraft.text.LiteralText;
 import net.minecraft.util.Formatting;
 import org.json.JSONObject;
 
@@ -25,7 +25,7 @@ import java.util.Objects;
 import java.util.concurrent.CompletableFuture;
 
 public class ServerCommand {
-    public static void registerCommand(CommandDispatcher<ServerCommandSource> dispatcher, CommandRegistryAccess registry, CommandManager.RegistrationEnvironment selection) {
+    public static void registerCommand(CommandDispatcher<ServerCommandSource> dispatcher, CommandManager.RegistrationEnvironment selection) {
         if (selection.dedicated) {
             dispatcher.register(CommandManager.literal("chatgpt")
                     .then(CommandManager.argument("message", StringArgumentType.string())
@@ -35,12 +35,17 @@ public class ServerCommand {
                                     String prompt = generatePrompt(message);
                                     CompletableFuture<String> future = getChatGPTResponse(prompt);
                                     future.thenAcceptAsync(response -> {
-                                        String playerName = Objects.requireNonNull(context.getSource().getPlayer()).getName().getString();
+                                        String playerName;
+                                        try {
+                                            playerName = Objects.requireNonNull(context.getSource().getPlayer()).getName().getString();
+                                        } catch (CommandSyntaxException e) {
+                                            throw new RuntimeException(e);
+                                        }
 
-                                        context.getSource().sendFeedback(Text.literal("[" + playerName + "] -> ").formatted(Formatting.GREEN)
-                                                .append(Text.literal(message).formatted(Formatting.AQUA)), false);
-                                        context.getSource().sendFeedback(Text.literal("[ChatGPT-" + Config.MODEL + "] -> " + "[" + playerName + "]" + ": ").formatted(Formatting.GOLD)
-                                                .append(Text.literal("\"" + response + "\"").formatted(Formatting.YELLOW)), false);
+                                        context.getSource().sendFeedback(new LiteralText("[" + playerName + "] -> ").formatted(Formatting.GREEN)
+                                                .append(new LiteralText(message).formatted(Formatting.AQUA)), false);
+                                        context.getSource().sendFeedback(new LiteralText("[ChatGPT-" + Config.MODEL + "] -> " + "[" + playerName + "]" + ": ").formatted(Formatting.GOLD)
+                                                .append(new LiteralText("\"" + response + "\"").formatted(Formatting.YELLOW)), false);
 
                                     });
                                     return 1;
